@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { env } from '@/lib/env'
 
 export default function CommunityPage() {
@@ -9,9 +9,14 @@ export default function CommunityPage() {
         Our day-to-day conversations happen in Slack — ask questions, share wins, and coordinate.
       </p>
       {env.slackInviteUrl ? (
-        <Button render={<a href={env.slackInviteUrl} target="_blank" rel="noreferrer" />}>
+        <a
+          href={env.slackInviteUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={buttonVariants()}
+        >
           Join the Slack
-        </Button>
+        </a>
       ) : (
         <p className="text-sm text-muted-foreground">The Slack invite link will appear here soon.</p>
       )}

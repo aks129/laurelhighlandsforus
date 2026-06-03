@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 
 export default function LandingPage() {
   return (
@@ -19,9 +19,9 @@ export default function LandingPage() {
         <li>A members-only Slack and an AI hosting helper (coming soon)</li>
       </ul>
       <div>
-        <Button size="lg" render={<Link href="/login" />}>
+        <Link href="/login" className={buttonVariants({ size: 'lg' })}>
           Join the community
-        </Button>
+        </Link>
       </div>
     </main>
   )
