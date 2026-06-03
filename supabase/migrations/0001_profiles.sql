@@ -32,11 +32,18 @@ create policy "profiles_select_own_or_admin"
   on public.profiles for select
   using (auth.uid() = id or public.is_admin());
 
--- A member can update their own profile (role changes are not done via the app).
+-- A member can update their own profile, but CANNOT change their own role.
+-- The with-check pins role to its current stored value, so a member cannot
+-- self-promote to admin via the Supabase API (RLS is the security boundary,
+-- not the app). Admin promotion happens via the seed script over a privileged
+-- (service-role) connection, which bypasses RLS.
 create policy "profiles_update_own"
   on public.profiles for update
   using (auth.uid() = id)
-  with check (auth.uid() = id);
+  with check (
+    auth.uid() = id
+    and role = (select p.role from public.profiles p where p.id = auth.uid())
+  );
 
 -- Auto-create a profile row whenever a new auth user signs up.
 create or replace function public.handle_new_user()
