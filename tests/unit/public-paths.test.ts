@@ -10,6 +10,9 @@ describe('isPublicPath', () => {
     expect(isPublicPath('/auth/callback')).toBe(true)
     expect(isPublicPath('/auth/confirm')).toBe(true)
   })
+  it('treats the public credits page as public', () => {
+    expect(isPublicPath('/credits')).toBe(true)
+  })
   it('treats member routes as private', () => {
     expect(isPublicPath('/home')).toBe(false)
     expect(isPublicPath('/account')).toBe(false)
