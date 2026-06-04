@@ -22,12 +22,7 @@ export function LoginForm() {
     setStatus(error ? 'error' : 'sent')
   }
 
-  async function signInWithGoogle() {
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo: `${siteUrl}/auth/callback?next=/home` },
-    })
-  }
+  // Google sign-in is deferred until OAuth is configured; magic link only for now.
 
   return (
     <div className="space-y-6">
@@ -53,14 +48,6 @@ export function LoginForm() {
           <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
         )}
       </form>
-
-      <div className="flex items-center gap-3 text-xs text-muted-foreground">
-        <span className="h-px flex-1 bg-border" /> or <span className="h-px flex-1 bg-border" />
-      </div>
-
-      <Button variant="outline" className="w-full" onClick={signInWithGoogle}>
-        Continue with Google
-      </Button>
     </div>
   )
 }

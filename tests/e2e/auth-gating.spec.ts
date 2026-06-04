@@ -6,11 +6,12 @@ test('landing page shows the join CTA', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Join the community' })).toBeVisible()
 })
 
-test('login page shows magic link and Google options', async ({ page }) => {
+test('login page shows the magic link option', async ({ page }) => {
   await page.goto('/login')
   await expect(page.getByLabel('Email')).toBeVisible()
   await expect(page.getByRole('button', { name: /magic link/i })).toBeVisible()
-  await expect(page.getByRole('button', { name: /Continue with Google/i })).toBeVisible()
+  // Google sign-in is intentionally hidden until OAuth is configured.
+  await expect(page.getByRole('button', { name: /Continue with Google/i })).toHaveCount(0)
 })
 
 test('anonymous visit to a gated route redirects to login', async ({ page }) => {
