@@ -5,6 +5,7 @@ const LINKS = [
   { href: '/home', label: 'Home' },
   { href: '/directory', label: 'Directory' },
   { href: '/classifieds', label: 'Free Pile' },
+  { href: '/events', label: 'Calls' },
   { href: '/community', label: 'Community' },
   { href: '/account', label: 'Account' },
 ]
