@@ -6,6 +6,7 @@ const LINKS = [
   { href: '/directory', label: 'Directory' },
   { href: '/classifieds', label: 'Free Pile' },
   { href: '/events', label: 'Calls' },
+  { href: '/assistant', label: 'Assistant' },
   { href: '/community', label: 'Community' },
   { href: '/account', label: 'Account' },
 ]

@@ -2,6 +2,7 @@ import { Video, CalendarPlus } from 'lucide-react'
 import { buildGoogleCalendarUrl, formatWhen, type EventItem } from '@/lib/events'
 import { buttonVariants } from '@/components/ui/button'
 import { EventAdminActions } from '@/components/event-admin-actions'
+import { EventRecapEditor } from '@/components/event-recap-editor'
 
 export function EventCard({
   event,
@@ -52,6 +53,7 @@ export function EventCard({
           <p className="mt-1 whitespace-pre-line text-sm text-muted-foreground">{event.recap}</p>
         </div>
       )}
+      {isAdmin && <EventRecapEditor id={event.id} initialRecap={event.recap} />}
     </div>
   )
 }

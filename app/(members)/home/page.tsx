@@ -8,13 +8,12 @@ const QUICK_LINKS = [
   { href: '/directory', icon: Wrench, title: 'Resource directory', body: 'Find trusted cleaners, handymen & contractors.', live: true },
   { href: '/classifieds', icon: Recycle, title: 'The free pile', body: 'Claim or pass along furniture & supplies.', live: true },
   { href: '/events', icon: CalendarDays, title: 'Community calls', body: 'Join the next call & add it to your calendar.', live: true },
+  { href: '/assistant', icon: Sparkles, title: 'AI hosting helper', body: 'Ask about pricing, rules & local tips.', live: true },
   { href: '/community', icon: MessagesSquare, title: 'Community Slack', body: 'Jump into the day-to-day conversation.', live: true },
   { href: '/account', icon: User, title: 'Your account', body: 'Review and update your profile.', live: true },
 ]
 
-const COMING = [
-  { icon: Sparkles, title: 'AI hosting helper' },
-]
+const COMING: { icon: typeof Sparkles; title: string }[] = []
 
 export default async function HomePage() {
   const supabase = await createClient()
@@ -73,24 +72,25 @@ export default async function HomePage() {
         ))}
       </section>
 
-      {/* Coming soon */}
-      <section>
-        <h2 className="font-display text-2xl text-pine-deep">Coming soon</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          The features we&rsquo;re building next for the community.
-        </p>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {COMING.map((c) => (
-            <div
-              key={c.title}
-              className="flex items-center gap-3 rounded-xl border border-dashed border-border bg-muted/40 px-4 py-4"
-            >
-              <c.icon className="size-5 text-amber" />
-              <span className="text-sm font-medium text-foreground">{c.title}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      {COMING.length > 0 && (
+        <section>
+          <h2 className="font-display text-2xl text-pine-deep">Coming soon</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            The features we&rsquo;re building next for the community.
+          </p>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {COMING.map((c) => (
+              <div
+                key={c.title}
+                className="flex items-center gap-3 rounded-xl border border-dashed border-border bg-muted/40 px-4 py-4"
+              >
+                <c.icon className="size-5 text-amber" />
+                <span className="text-sm font-medium text-foreground">{c.title}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }

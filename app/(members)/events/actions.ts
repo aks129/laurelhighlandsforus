@@ -43,3 +43,10 @@ export async function deleteEvent(id: string) {
   await supabase.from('events').delete().eq('id', id)
   revalidatePath('/events')
 }
+
+export async function saveRecap(id: string, recap: string) {
+  const { supabase } = await requireAdmin()
+  const value = recap.trim()
+  await supabase.from('events').update({ recap: value || null }).eq('id', id)
+  revalidatePath('/events')
+}
