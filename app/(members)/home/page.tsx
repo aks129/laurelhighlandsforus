@@ -5,12 +5,12 @@ import { createClient } from '@/lib/supabase/server'
 import type { Profile } from '@/lib/profile'
 
 const QUICK_LINKS = [
+  { href: '/directory', icon: Wrench, title: 'Resource directory', body: 'Find trusted cleaners, handymen & contractors.', live: true },
   { href: '/community', icon: MessagesSquare, title: 'Community Slack', body: 'Jump into the day-to-day conversation.', live: true },
   { href: '/account', icon: User, title: 'Your account', body: 'Review and update your profile.', live: true },
 ]
 
 const COMING = [
-  { icon: Wrench, title: 'Resource directory' },
   { icon: Recycle, title: 'Members’ marketplace' },
   { icon: CalendarDays, title: 'Community calls' },
   { icon: Sparkles, title: 'AI hosting helper' },

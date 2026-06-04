@@ -3,6 +3,7 @@ import { SignOutButton } from '@/components/sign-out-button'
 
 const LINKS = [
   { href: '/home', label: 'Home' },
+  { href: '/directory', label: 'Directory' },
   { href: '/community', label: 'Community' },
   { href: '/account', label: 'Account' },
 ]
